@@ -149,21 +149,21 @@
       "purpose": {
         "type": "string",
         "description": "Purpose of the device in the SBI ecosystem",
-        "enum": ["Auth", "Registration", ""]
+        "enum": ["Auth", "Registration"]
       },
       "error": {
         "type": "object",
         "properties": {
           "errorCode": {
             "type": "string",
-            "description": "Standardized error code defined in the error code section"
+            "description": "Error code if an error occurred during discovery."
           },
           "errorInfo": {
             "type": "string",
-            "description": "Description of the error that can be displayed to end user. Multi-lingual support."
+            "description": "Error information if an error occurred during discovery."
           }
         },
-        "description": "Relevant errors as defined under the error section of this document."
+        "description": "Error information if an error occurred during discovery."
       }
     }
   }
