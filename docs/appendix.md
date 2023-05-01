@@ -169,3 +169,114 @@
   }
 }
 ```
+## Capture Request
+```JSON
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Capture Request",
+  "type": "object",
+  "properties": {
+    "env": {
+      "type": "string",
+      "enum": [
+        "Staging",
+        "Developer",
+        "Pre-Production",
+        "Production"
+      ]
+    },
+    "purpose": {
+      "type": "string",
+      "enum": [
+        "Auth",
+        "Registration"
+      ]
+    },
+    "specVersion": {
+      "type": "string"
+    },
+    "timeout": {
+      "type": "integer"
+    },
+    "captureTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "domainUri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "transactionId": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Finger",
+              "Iris",
+              "Face"
+            ]
+          },
+          "count": {
+            "type": "integer"
+          },
+          "bioSubType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requestedScore": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "deviceId": {
+            "type": "string"
+          },
+          "deviceSubId": {
+            "type": "integer",
+            "enum": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "previousHash": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "count",
+          "requestedScore",
+          "deviceId",
+          "deviceSubId",
+          "previousHash"
+        ]
+      }
+    },
+    "customOpts": {
+      "type": "object",
+      "maxProperties": 50,
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "env",
+    "purpose",
+    "specVersion",
+    "timeout",
+    "captureTime",
+    "domainUri",
+    "transactionId",
+    "bio"
+  ]
+}
+```
